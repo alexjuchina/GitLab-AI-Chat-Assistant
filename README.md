@@ -1,4 +1,4 @@
-#### GitLab ChatGPT Integration
+## GitLab ChatGPT Integration
 
 这个简单的 Flask 应用允许您通过 GitLab Webhook 与 ChatGPT 进行集成，以便在 GitLab Merge Request 的讨论中直接对话、获取 AI 的答案，并将答案添加到相应的讨论中。
 
