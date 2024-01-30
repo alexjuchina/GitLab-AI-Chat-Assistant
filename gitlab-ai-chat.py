@@ -9,7 +9,7 @@ gitlab_private_token = "xxxxxxxxx"
 ai_username = 'cs_ops'
 headers = {"Private-Token": gitlab_private_token}
 # GPT
-openai.api_key = "sk-oVuRgPNKIcHCQlWNrPapIc4iyI2Dn2W0kTFb8EKK5bthGQbj"
+openai.api_key = "sk-xxxxxxxxxxxx"
 openai.base_url = "https://api.chatanywhere.com.cn"
 
 def extract_info(webhook_json):
