@@ -1,22 +1,26 @@
-## GitLab ChatGPT Integration
+## GitLab AI Chat Assistant
 
-这个简单的 Flask 应用允许您通过 GitLab Webhook 与 ChatGPT 进行集成，以便在 GitLab Merge Request 的讨论中直接对话、获取 AI 的答案，并将答案添加到相应的讨论中。
+通过 GitLab Webhook 与 ChatGPT 进行集成，以便在 GitLab Merge Request 或 Issues 的讨论中直接对话、获取 AI 的答案，并将答案添加到相应的讨论中。
 
-#### 使用说明
+- 支持对 MR 的代码变更进行 AI 评审（自动触发）
+- 支持在 MR 的代码评审中 @<ai_username> 进行多轮对话，如：`@cs_ops，关于你的第三条建议，请给出代码示例Demo。`
+- 支持在 Issue 的评论中 @<ai_username> 进行多轮对话，如：`@cs_ops，请帮我重新整理上一个问题。`
+
+#### 服务安装说明
 
 1. 安装依赖：运行 `pip install flask requests openai` 安装所需的 Python 依赖项。
 
-2. 配置 GitLab 和 OpenAI API：在代码中设置 `gitlab_server_url`、`gitlab_private_token` 和 `openai.api_key` 为您的 GitLab 和 OpenAI API 的访问密钥。
+2. 配置 GitLab 和 OpenAI API：在代码中设置 `gitlab_server_url`、`gitlab_private_token` 和 `openai.api_key` 、`openai.base_url` 为您的 GitLab 和 OpenAI API 的访问密钥、API 服务器。
 
 3. 运行应用：运行应用 `python your_app_name.py`。
 
-4. 设置 GitLab Webhook：在 GitLab 项目设置中添加 Webhook，将其指向您的应用的 `/note` 路由。
+4. 设置 GitLab Webhook：在 GitLab 项目设置中添加 Webhook，将其指向您的应用的 `/gitlab_ai_webhook` 路由。如：`http://43.155.75.47:9998/gitlab_ai_webhook`
 
 #### 工作流程
 
-1. 当有新的讨论或注释时，GitLab 将触发 Webhook，向您的 Flask 应用发送有关讨论的 JSON 数据。
+1. 当有新的MR合并请求、MR 或 Issue讨论时，GitLab 将触发 Webhook，向您的 Flask 应用发送有关讨论的 JSON 数据。
 
-2. 提取项目 ID、Merge Request ID、Discussion ID 以及讨论内容，并将其用于后续处理。
+2. 提取项目 ID、Merge Request ID、Issue ID、Discussion ID 以及讨论内容，并将其用于后续处理。
 
 3. 使用 ChatGPT 模型将收到的Discussion内容及对话历史，通过固定格式发送给 ChatGPT，并获取 ChatGPT 的回答。
 
@@ -41,4 +45,4 @@ messages = [
 
 #### 注意事项
 
-- 目前暂未获取 MR changes，与问题及历史一起提交给 AI，目的是担心token长度超限，后续可以按需添加。
+- 目前暂未获取 MR changes，与问题及历史一起提交给 AI，通常change的变更比较多，导致token长度超限，后续可以根据大模型的限制情况，按需调整和添加。
