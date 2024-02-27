@@ -6,6 +6,10 @@
 - 支持在 MR 的代码评审中 @<ai_username> 进行多轮对话，如：`@cs_ops，关于你的第三条建议，请给出代码示例Demo。`
 - 支持在 Issue 的评论中 @<ai_username> 进行多轮对话，如：`@cs_ops，请帮我重新整理上一个问题。`
 
+流程图：
+
+![](img/GitLab_AI_Assistant.png)
+
 #### 服务安装说明
 
 1. 安装依赖：运行 `pip install flask requests openai` 安装所需的 Python 依赖项。
