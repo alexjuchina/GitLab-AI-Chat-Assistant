@@ -1,5 +1,7 @@
 ## GitLab AI Chat Assistant
 
+[Readme in English](./README_en.md)
+
 通过 GitLab Webhook 与 ChatGPT 进行集成，以便在 GitLab Merge Request 或 Issues 的讨论中直接对话、获取 AI 的答案，并将答案添加到相应的讨论中。
 
 - 支持对 MR 的代码变更进行 AI 评审（自动触发）
