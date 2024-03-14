@@ -8,7 +8,7 @@
 
 流程图：
 
-![](img/GitLab_AI_Assistant.png)
+![](img/gitlab_ai_chat.jpeg)
 
 #### 服务安装说明
 
